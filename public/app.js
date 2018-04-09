@@ -7,6 +7,13 @@ $.getJSON("/articles", function(data) {
   }
 });
 
+$(document).on("click", "time2scrape", function() {
+  event.preventDefault();
+  $.getJSON("/scrape", data => {
+    console.log("Scrape Complete");
+  });
+});
+
 // Whenever someone clicks a p tag
 $(document).on("click", "p", function() {
   // Empty the notes from the note section
@@ -88,5 +95,3 @@ $(document).on("click", ".save", function(){
       console.log(data);
     });
 });
-
-// hello

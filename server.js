@@ -4,6 +4,9 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 // var Message = require("./models/message.js");
 // var Article = require("./models/article.js");
+var mongodb = require("mongodb");
+
+var MongoClient = mongodb.MongoClient;
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
@@ -31,16 +34,16 @@ app.use(express.static("public"));
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/sportdb");
-  useMongoClient: true
+// mongoose.connect("mongodb://localhost/sportdb");
+//   useMongoClient: true
 
-// mongoose.connect(
-//   // "mongodb://heroku_3h5kpclp:otg572npmm838k7h46t442u0kf@ds145997.mlab.com:45997/heroku_3h5kpclp",
-//   "mongodb://localhost/Scraping-News-Site",
-//   {
-//     useMongoClient: true
-//   }
-// );
+mongoose.connect(
+  "mongodb://heroku_3h5kpclp:otg572npmm838k7h46t442u0kf@ds145997.mlab.com:45997/heroku_3h5kpclp",
+  "mongodb://localhost/Scraping-News-Site",
+  {
+    useMongoClient: true
+  }
+);
 
 // ******
 // ROUTES
@@ -163,6 +166,8 @@ app.get("/saved", function(req, res) {
       res.json(err);
     });
 });
+
+
 
 // Start the server
 app.listen(PORT, function() {
