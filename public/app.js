@@ -6,14 +6,6 @@ $.getJSON("/articles", function(data) {
     $("#articles").append("<div><p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p><button class='save'>Save</button></div>");
   }
 });
-
-$(document).on("click", "time2scrape", function() {
-  event.preventDefault();
-  $.getJSON("/scrape", data => {
-    console.log("Scrape Complete");
-  });
-});
-
 // Whenever someone clicks a p tag
 $(document).on("click", "p", function() {
   // Empty the notes from the note section
